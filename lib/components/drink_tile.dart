@@ -27,10 +27,15 @@ class DrinkTile extends StatelessWidget {
         trailing: MaterialButton(
           onPressed: () {
             Provider.of<Shop>(context, listen: false).addToCart(drink);
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                duration: const Duration(milliseconds: 500),
+                content: Text("${drink.drinkName} added to cart."),
+              ),
+            );
           },
-          child: Text(
-            'Add to cart',
-            style: TextStyle(color: Colors.brown.shade400),
+          child: const Icon(
+            Icons.add,
           ),
         ),
       ),
